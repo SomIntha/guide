@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ouvre ton diaphragme — Guide offert · Som Intha</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --terra: #C4622D;
+      --terra-light: #D4784A;
+      --terra-pale: #EDD5C4;
+      --sauge: #7A8C6E;
+      --sauge-pale: #D6DDD0;
+      --beige: #F5EFE6;
+      --brun: #3A2A1E;
+      --brun-soft: #6B4F3A;
+      --cream: #FBF7F2;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background-color: var(--cream);
+      color: var(--brun);
+      min-height: 100vh;
+    }
+
+    /* ── BACKGROUND ── */
+    .bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 10% 15%, rgba(196,98,45,0.09) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 60% at 90% 85%, rgba(122,140,110,0.10) 0%, transparent 55%),
+        var(--cream);
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      max-width: 620px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
+
+    /* ── BRAND ── */
+    .brand {
+      text-align: center;
+      margin-bottom: 40px;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .brand-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 13px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--brun-soft);
+    }
+
+    .brand-divider {
+      width: 32px;
+      height: 1px;
+      background: var(--terra);
+      margin: 10px auto 0;
+      opacity: 0.5;
+    }
+
+    /* ── BADGE ── */
+    .badge {
+      display: inline-block;
+      background: var(--terra-pale);
+      color: var(--terra);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      text-align: center;
+      animation: fadeUp 0.6s 0.15s ease both;
+    }
+
+    .hero-free {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 14px;
+      letter-spacing: 0.12em;
+      color: var(--sauge);
+      margin-bottom: 12px;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(38px, 8vw, 54px);
+      line-height: 1.08;
+      color: var(--brun);
+      margin-bottom: 20px;
+    }
+
+    .hero-title em {
+      color: var(--terra);
+      font-style: italic;
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--brun-soft);
+      max-width: 480px;
+      margin: 0 auto 36px;
+    }
+
+    /* ── VISUAL ── */
+    .visual {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 36px;
+      background: radial-gradient(circle, var(--terra-pale) 0%, var(--beige) 70%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 52px;
+      animation: fadeUp 0.6s 0.2s ease both;
+      box-shadow: 0 8px 32px rgba(196,98,45,0.12);
+    }
+
+    /* ── PROMISES ── */
+    .promises {
+      background: white;
+      border: 1px solid rgba(196,98,45,0.12);
+      border-radius: 16px;
+      padding: 28px 24px;
+      margin-bottom: 36px;
+      animation: fadeUp 0.6s 0.25s ease both;
+    }
+
+    .promises-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--brun-soft);
+      margin-bottom: 18px;
+      text-align: center;
+    }
+
+    .promise-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .promise-item:last-child { border-bottom: none; }
+
+    .promise-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--beige);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .promise-text {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--brun-soft);
+    }
+
+    .promise-text strong {
+      font-weight: 500;
+      color: var(--brun);
+    }
+
+    /* ── FORM ── */
+    .form-block {
+      background: var(--brun);
+      border-radius: 20px;
+      padding: 36px 28px;
+      margin-bottom: 28px;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+
+    .form-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 26px;
+      color: var(--beige);
+      text-align: center;
+      margin-bottom: 6px;
+    }
+
+    .form-sub {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(245,239,230,0.6);
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .form-field {
+      margin-bottom: 14px;
+    }
+
+    .form-field input {
+      width: 100%;
+      padding: 14px 18px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(245,239,230,0.15);
+      border-radius: 10px;
+      color: var(--beige);
+      font-family: 'Jost', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .form-field input::placeholder {
+      color: rgba(245,239,230,0.35);
+    }
+
+    .form-field input:focus {
+      border-color: rgba(196,98,45,0.6);
+      background: rgba(255,255,255,0.12);
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 16px;
+      background: var(--terra);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Jost', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      margin-top: 6px;
+    }
+
+    .btn-submit:hover {
+      background: var(--terra-light);
+      transform: translateY(-1px);
+    }
+
+    .btn-submit:active { transform: translateY(0); }
+
+    .form-privacy {
+      font-size: 11px;
+      font-weight: 300;
+      color: rgba(245,239,230,0.35);
+      text-align: center;
+      margin-top: 14px;
+      line-height: 1.6;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      text-align: center;
+      animation: fadeUp 0.6s 0.35s ease both;
+    }
+
+    .footer-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 17px;
+      color: var(--brun-soft);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .footer-sig {
+      font-size: 12px;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(58,42,30,0.4);
+    }
+
+    .footer-disclaimer {
+      font-size: 10px;
+      font-weight: 300;
+      color: rgba(58,42,30,0.35);
+      margin-top: 24px;
+      line-height: 1.7;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg"></div>
+
+<div class="page">
+
+  <!-- BRAND -->
+  <div class="brand">
+    <div class="brand-name">Som Intha · Som.Holistic</div>
+    <div class="brand-divider"></div>
+  </div>
+
+  <!-- BADGE -->
+  <div style="text-align:center">
+    <span class="badge">✦ Guide gratuit</span>
+  </div>
+
+  <!-- VISUAL -->
+  <div class="visual">🫁</div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-free">Reçois gratuitement</div>
+    <h1 class="hero-title">
+      Ouvre ton<br>
+      <em>diaphragme</em>
+    </h1>
+    <p class="hero-sub">
+      Tu bloques dans la respiration. La gorge serrée. La poitrine lourde.<br>
+      Ce geste ancestral libère ce que tu portes depuis trop longtemps.
+    </p>
+  </div>
+
+  <!-- PROMISES -->
+  <div class="promises">
+    <div class="promises-title">Ce que tu vas recevoir</div>
+
+    <div class="promise-item">
+      <div class="promise-icon">🤲</div>
+      <div class="promise-text">
+        <strong>Le point d'urgence</strong> — un point de pression ancestral avec un mouvement simple pour apaiser immédiatement
+      </div>
+    </div>
+
+    <div class="promise-item">
+      <div class="promise-icon">🌿</div>
+      <div class="promise-text">
+        <strong>Pourquoi ce n'est pas suffisant</strong> — ce geste soulage, mais sans le protocole complet, la tension revient. La suite est dans l'ebook.
+      </div>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <div class="form-block">
+    <div class="form-title">Reçois ton guide</div>
+    <div class="form-sub">Gratuit · Immédiatement dans ta boîte mail</div>
+
+    <!-- Remplace l'action ci-dessous par ton URL Systeme.io -->
+    <form action="https://somholistic.com/adf472cd" method="POST">
+      <div class="form-field">
+        <input type="text" name="first_name" placeholder="Ton prénom" required />
+      </div>
+      <div class="form-field">
+        <input type="email" name="email" placeholder="Ton adresse email" required />
+      </div>
+      <button type="submit" class="btn-submit">
+        Je reçois mon guide gratuit →
+      </button>
+    </form>
+
+    <div class="form-privacy">
+      Tes données restent confidentielles. Aucun spam. Tu peux te désinscrire à tout moment.
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-quote">
+      "Ton corps porte ce que tu n'as pas eu<br>le temps de traverser."
+    </div>
+    <div class="footer-sig">Som Intha · Praticienne holistique · Soins ancestraux</div>
+    <div class="footer-disclaimer">
+      Je ne suis ni médecin, ni thérapeute. Contenus basés sur mon vécu et mes recherches personnelles,<br>ne remplacent pas un suivi médical.
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
